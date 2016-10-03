@@ -24,10 +24,6 @@ The instructions can be provided either via an optional file, or fed directly in
 
 ## Testing
 
-To run the feature specs, ensuring the robot behaves as expected, run:
-
-    bundle exec rake features
-
 The run the unit tests, ensuring each part of the application is behaving as expected, run:
 
     bundle exec rake 

@@ -9,5 +9,5 @@ command_factory = CommandFactory.new(robot)
 instruction_processor = InstructionProcessor.new(command_factory)
 
 ARGF.each_line { |line| 
-  instruction_processor.process(line.strip) 
+  instruction_processor.process(line.strip)
 }

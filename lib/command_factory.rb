@@ -20,15 +20,21 @@ class CommandFactory
   private
 
   def command_for(instruction)
+    unknown_command =  -> { UnknownCommand.new(instruction, io) }
     commands = {
-        'PLACE' => -> { params = instruction.split.last; PlaceCommand.new(robot, *params.split(',')) },
-        'MOVE' => -> { MoveCommand.new(robot) },
-        'LEFT' => -> { TurnCommand.new(robot, TurnCommand::LEFT) },
-        'RIGHT' => -> { TurnCommand.new(robot, TurnCommand::RIGHT) },
-        'REPORT' => -> { ReportCommand.new(robot, io) },
+      'PLACE' => -> { params = instruction.split.last; PlaceCommand.new(robot, *params.split(',')) },
+      'MOVE' => -> { MoveCommand.new(robot) },
+      'LEFT' => -> { TurnCommand.new(robot, TurnCommand::LEFT) },
+      'RIGHT' => -> { TurnCommand.new(robot, TurnCommand::RIGHT) },
+      'REPORT' => -> { ReportCommand.new(robot, io) },
     }
 
-    commands.fetch(processed_instruction(instruction), -> { UnknownCommand.new(instruction, io) }).call
+    begin
+      commands.fetch(processed_instruction(instruction), unknown_command).call
+    rescue Exception => e
+      io.puts "Something went wrong: #{e.message}"
+      unknown_command.call
+    end
   end
 
   def processed_instruction(instruction)

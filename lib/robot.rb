@@ -13,8 +13,13 @@ class Robot
   end
 
   def place(position, facing)
-    move_to(position)
-    @facing = facing
+    upcased_facing = facing.upcase
+    if FACINGS.include?(upcased_facing)
+      @facing = upcased_facing
+      move_to(position)
+    else
+      io.puts "Invalid facing: #{facing}, valid facings: #{FACINGS.join(' ')}"
+    end
   end
 
   def step_forward
@@ -49,7 +54,7 @@ class Robot
     if @table.within_edges?(position)
       @position = position
     else
-      io.puts "Can not move to position: #{position}"
+      io.puts "Can not move or place robot to position: #{position}"
     end
   end
 end

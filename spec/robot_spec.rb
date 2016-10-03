@@ -29,6 +29,16 @@ describe Robot do
       end
     end
 
+    context 'when trying to place the robot on a non-legal facing' do
+      before do 
+        robot.place(Position.new(1, 2), 'WESTWOL')
+      end
+
+      it 'does not place the robot' do
+        expect(robot).to_not be_placed
+      end
+    end
+
     context 'when trying to place the robot on a non-legal square' do
       before do 
         allow(table).to receive(:within_edges?).and_return(false)
