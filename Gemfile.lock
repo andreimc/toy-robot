@@ -1,5 +1,5 @@
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     diff-lcs (1.2.5)
     docile (1.1.5)
@@ -30,3 +30,6 @@ DEPENDENCIES
   rake
   rspec
   simplecov
+
+BUNDLED WITH
+   1.12.3

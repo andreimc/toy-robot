@@ -8,7 +8,7 @@ This application simulates a toy robot, moving about a table of 5x5 squares. The
 
 ## Installation 
 
-Ensure you have [Git](http://git-scm.com/downloads) and [Ruby 2.1.2](http://www.ruby-lang.org/en/downloads/) installed. Then run:
+Ensure you have [Git](http://git-scm.com/downloads) and [Ruby 2+](http://www.ruby-lang.org/en/downloads/) installed. Then run:
 
     cd toy-robot
     gem install bundler
